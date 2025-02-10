@@ -16,7 +16,7 @@
 	<artifactId>springboottest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>projectORS</name>
-	<packaging>jar</packaging>
+	 <packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -154,7 +154,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-
 
 </project>

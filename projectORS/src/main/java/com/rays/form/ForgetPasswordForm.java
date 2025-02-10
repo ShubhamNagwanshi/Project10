@@ -8,7 +8,7 @@ import com.rays.common.BaseForm;
 /**
  * Contains Forget Password form elements and their declarative input
  * validations.
- *Shubham Nagwanshi 
+ * Shivanshi Gupta 
  */
 public class ForgetPasswordForm extends BaseForm {
 

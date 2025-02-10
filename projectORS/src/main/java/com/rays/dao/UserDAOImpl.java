@@ -22,7 +22,7 @@ import com.rays.dto.UserDTO;
 /**
  * Contains User CRUD operations
  * 
- *Shubham Nagwanshi
+ * Shivanshi Gupta
  *
  */
 @Repository
@@ -38,12 +38,12 @@ public class UserDAOImpl extends BaseDAOImpl<UserDTO> implements UserDAOInt {
 
 	@Override
 	protected List<Predicate> getWhereClause(UserDTO dto, CriteriaBuilder builder, Root<UserDTO> qRoot) {
-
+    System.out.println("getwhereclause in userdaoimpl");
 		// Create where conditions
 		List<Predicate> whereCondition = new ArrayList<Predicate>();
 
 		if (!isEmptyString(dto.getFirstName())) {
-
+ 
 			whereCondition.add(builder.like(qRoot.get("firstName"), dto.getFirstName() + "%"));
 		}
 
@@ -71,7 +71,6 @@ public class UserDAOImpl extends BaseDAOImpl<UserDTO> implements UserDAOInt {
 		}
 
 		if (isNotNull(dto.getDob())) {
-			System.out.println("jjjjjjjjjjjjjjjjjjjjj"+dto.getDob());
 
 			whereCondition.add(builder.equal(qRoot.get("dob"), dto.getDob()));
 		}

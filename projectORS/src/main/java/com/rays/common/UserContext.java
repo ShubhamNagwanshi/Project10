@@ -5,7 +5,7 @@ import com.rays.dto.UserDTO;
 /**
  * Contains logged in user information
  * 
- *Shubham Nagwanshi 
+ * Shivanshi Gupta 
  *
  */
 public class UserContext {

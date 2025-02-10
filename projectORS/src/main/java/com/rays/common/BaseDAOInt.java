@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 /**
  * 
  * Role DAO interface.
- *Shubham Nagwanshi 
+ * Shivanshi Gupta 
  */
 
 public interface BaseDAOInt<T extends BaseDTO> {

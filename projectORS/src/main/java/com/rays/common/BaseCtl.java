@@ -1,3 +1,4 @@
+
 package com.rays.common;
 
 import java.util.Date;
@@ -21,12 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rays.dto.MarksheetDTO;
 import com.rays.dto.UserDTO;
 
 /**
  * Base controller class contains get, search, save, delete REST APIs
  * 
- *Shubham Nagwanshi
+ * Shivanshi Gupta
  */
 public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends BaseServiceInt<T>> {
 
@@ -99,7 +101,7 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 	@GetMapping("get/{id}")
 	public ORSResponse get(@PathVariable long id) {
 
-		System.out.println("BaseCtl Get() method run.......Rahul");
+		System.out.println("BaseCtl Get() method run.......Shivanshi");
 
 		ORSResponse res = new ORSResponse(true);
 		T dto = baseService.findById(id, userContext);
@@ -122,31 +124,24 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("delete/{id}")
-	public ORSResponse delete(@PathVariable long id) {
-		System.out.println("BaseCtl Delete() method run........vipin");
-		ORSResponse res = new ORSResponse(true);
-		try {
-			T dto = baseService.delete(id, userContext);
-			res.addData(dto);
-			System.out.println("Record Deleted Successfully");
-		} catch (Exception e) {
-			res.setSuccess(false);
-			res.addMessage(e.getMessage());
-		}
-		return res;
-	}
+	/*
+	 * @GetMapping("delete/{id}") public ORSResponse (@PathVariable long id) {
+	 * System.out.println("BaseCtl Delete() method run........amit"); ORSResponse
+	 * res = new ORSResponse(true); try { T dto = baseService.delete(id,
+	 * userContext); res.addData(dto);
+	 * System.out.println("Record Deleted Successfully"); } catch (Exception e) {
+	 * res.setSuccess(false); res.addMessage(e.getMessage()); } return res; }
+	 */
 
 	@PostMapping("deleteMany/{ids}")
-	public ORSResponse deleteMany(@PathVariable String[] ids, @RequestParam("pageNo") String pageNo,
-			@RequestBody F form) {
+	public ORSResponse deleteMany(@PathVariable String[] ids, @RequestParam("pageNo") String pageNo, @RequestBody F form) {
 		System.out.println("BaseCtl DeleteMany() method....Rahul... run");
 		ORSResponse res = new ORSResponse(true);
 		try {
 
 			// System.out.println("deleteMany Page No is ******---" + pageNo);
 
-			for (String id : ids) {
+			for (String id : ids) {                                                                                                                
 				System.out.println("Records To be Deleted :: " + id);
 				baseService.delete(Long.parseLong(id), userContext);
 
@@ -166,7 +161,7 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 			res.addData(baseService.search(dto, Integer.parseInt(pageNo), pageSize, userContext));
 			res.setSuccess(true);
 			res.addMessage("Records Deleted Successfully");
-			System.out.println("Records Deleted Successfully by Rahul");
+			System.out.println("Records Deleted Successfully");
 
 		} catch (Exception e) {
 			res.setSuccess(false);
@@ -237,14 +232,19 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 		}
 		try {
 			T dto = (T) form.getDto();
-			System.out.println("237----------->" + dto);
+			System.out.println("Shivanshi>>>>>"+dto.getId());
+			//System.out.println("237----------->" + dto);
+			
+		
 			if (dto.getId() != null && dto.getId() > 0) {
 				T existDto1 = (T) baseService.findByUniqueKey(dto.getUniqueKey(), dto.getUniqueValue(), userContext);
 				if (existDto1 != null && dto.getId() != existDto1.getId()) {
+					System.out.println("inside exisdto");
+					System.out.println("ShivanshiGupta>>>>>>"+dto.getId());
+					System.out.println("ShivanshiGupta>>>>>>"+existDto1.getId());
 					res.addMessage(dto.getLabel() + " already exist");
-					res.setSuccess(false);
 					res.addData(dto);
-
+					res.setSuccess(false);
 					return res;
 				}
 				baseService.update(dto, userContext);
@@ -253,17 +253,20 @@ public abstract class BaseCtl<F extends BaseForm, T extends BaseDTO, S extends B
 				System.out.println("before calling add of baseservice");
 				if (dto.getUniqueKey() != null && !dto.getUniqueKey().equals("")) {
 					T existDto = (T) baseService.findByUniqueKey(dto.getUniqueKey(), dto.getUniqueValue(), userContext);
+					System.out.println("JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ");
 					if (existDto != null) {
 						System.out.println("247----------->" + existDto);
 						res.addMessage(dto.getLabel() + " already exist");
 						res.setSuccess(false);
-												return res;
+						return res;
 					}
 				}
-
+				System.out.println("AmitAmit>>>>>>>"+dto.getId());
 				baseService.add(dto, userContext);
+				System.out.println("BansalBansal>>>>>>>"+dto.getId());
 			}
 			res.addData(dto.getId());
+			
 		} catch (Exception e) {
 			res.setSuccess(false);
 			res.addMessage(e.getMessage());

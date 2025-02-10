@@ -11,12 +11,14 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.rays.common.FrontCtl;
+import com.rays.common.FrontCtl;		
 
 /**
- *Shubham Nagwanshi
+ * Shivanshi Gupta
  *
  */
+
+ 
 @SpringBootApplication
 public class ProjectOrsApplication extends SpringBootServletInitializer {
 
@@ -41,31 +43,27 @@ public class ProjectOrsApplication extends SpringBootServletInitializer {
 
 		WebMvcConfigurer w = new WebMvcConfigurer() {
 
-			/**
+			/**R
 			 * Add CORS
 			 * 
 			 */
-			public void addCorsMappings(CorsRegistry registry) {
-				CorsRegistration cors = registry.addMapping("/**");//Cross-origin resource sharing (CORS)
+			public void addCorsMappings(CorsRegistry registry) {                                                         
+				CorsRegistration cors = registry.addMapping("/**");
 				cors.allowedOrigins("http://localhost:4200");
 //				cors.allowedHeaders("*");
 				cors.allowedMethods("GET", "POST", "PUT", "DELETE");
 				cors.allowCredentials(true);
 			}
-			
-			//Cross-origin resource sharing (CORS)==>> is a browser security feature that restricts cross-origin HTTP 
-			//requests that are initiated from scripts running in the browser.
 
 			/**
 			 * Add Interceptors
 			 */
 
-			
-			  @Override public void addInterceptors(InterceptorRegistry registry) {
-			  registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns(
-			  "/Auth/**" ,"/User/profilePic/**"); }
-			  
-			 
+			@Override
+			public void addInterceptors(InterceptorRegistry registry) {
+				registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns("/Auth/**","/User/profilePic/**");
+			}
+
 			/*
 			 * @Override public void addResourceHandlers(ResourceHandlerRegistry registry) {
 			 * registry.addResourceHandler("/**").addResourceLocations("classpath:/public/")

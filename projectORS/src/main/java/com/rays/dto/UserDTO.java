@@ -13,9 +13,60 @@ import com.rays.common.BaseDTO;
 
 /**
  * User POJO class. It is persistent object.
- * AuthorShubham Nagwanshi 
+ * Author Shivanshi Gupta 
  */
 
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+
+
+
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
+/**
+ * @author Amit
+ *
+ */
 @Entity
 @Table(name = "ST_USER")
 public class UserDTO extends BaseDTO {
@@ -148,6 +199,8 @@ public class UserDTO extends BaseDTO {
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
+	
+	
 
 	public String getPhone() {
 		return phone;
@@ -241,6 +294,7 @@ public class UserDTO extends BaseDTO {
 		return id + "";
 	}
 
+	
 	public String getValue() {
 		return firstName + " " + lastName;
 	}

@@ -20,7 +20,7 @@ import javax.persistence.criteria.Root;
 import com.rays.exception.DuplicateRecordException;
 
 /**
- *Shubham Nagwanshi
+ * Shivanshi Gupta
  *
  * @param <T>
  */
@@ -109,17 +109,17 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 		if (dto.isGroupFilter()) {
 			whereClause.add(builder.equal(qRoot.get("orgId"), dto.getOrgId()));
 		}
-		System.out.println(" isgroup skipped......rahul");
+		System.out.println(" isgroup skipped......shivanshi");
 		cq.where(whereClause.toArray(new Predicate[whereClause.size()]));
 
 		List<Order> orderBys = getOrderByClause(dto, builder, qRoot);
 
-		System.out.println("after getOrder By clause........rahul");
+		System.out.println("after getOrder By clause........shivanshi");
 		cq.orderBy(orderBys.toArray(new Order[orderBys.size()]));
 
-		System.out.println("After order by clause.......rahul ");
+		System.out.println("After order by clause.......shivanshi ");
 		TypedQuery<T> query = entityManager.createQuery(cq);
-		System.out.println("createCriteria end here---....rahul");
+		System.out.println("createCriteria end here---....shivanshi");
 		return query;
 
 	}
@@ -193,7 +193,7 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 		populate(dto, userContext);
 		System.out.println("Dto start ");
 		System.out.println(dto);
-		System.out.println("before calling persist method in base dao......vipin");
+		System.out.println("before calling persist method in base dao......shivanshi");
 		entityManager.persist(dto);
 
 		return dto.getId();
@@ -311,7 +311,7 @@ public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T> {
 	protected List<Order> getOrderByClause(T dto, CriteriaBuilder builder, Root<T> qRoot) {
 
 		// Apply Order by clause
-		System.out.println("baseDAO in getOrderByClause.......vipin ");
+		System.out.println("baseDAO in getOrderByClause.......shivanshi ");
 		LinkedHashMap<String, String> map = dto.orderBY();
 
 		List<Order> orderBys = new ArrayList<Order>();

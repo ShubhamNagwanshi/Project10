@@ -4,18 +4,17 @@ import java.util.Date;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class UserRegistrationForm {
 
 	@NotEmpty(message= "please enter first name")
-	@Pattern(regexp = "^[a-zA-Z]*$")
 	private String firstName;
 	/**
 	 * Last Name of User
 	 */
 	@NotEmpty(message= "please enter last name")
-	@Pattern(regexp = "^[a-zA-Z]*$")
 	private String lastName;
 
 	@Email
@@ -30,7 +29,7 @@ public class UserRegistrationForm {
 	/**
 	 * Date of Birth of User
 	 */
-
+   @NotNull(message="please enter dob")
 	private Date dob;
 	
 	
